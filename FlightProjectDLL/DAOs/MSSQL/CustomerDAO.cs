@@ -12,11 +12,10 @@ namespace FlightProject.DAOs
 {
     class CustomerDAO : ICustomerDAO
     {
-        const string CONNECTIONSTRING = ConnectionStrings.MSSQLConnectionString;
 
         public void Add(Customer t)
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -75,7 +74,7 @@ namespace FlightProject.DAOs
         public int DoesCustomerExist(Customer customer)
         {
             int result = 0;
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -107,7 +106,7 @@ namespace FlightProject.DAOs
         {
             Customer customer = new Customer();
 
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -143,7 +142,7 @@ namespace FlightProject.DAOs
         {
             List<Customer> customers = new List<Customer>();
 
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -173,7 +172,7 @@ namespace FlightProject.DAOs
         {
             Customer customer = new Customer();
 
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -207,7 +206,7 @@ namespace FlightProject.DAOs
 
         public void Remove(Customer t)
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -230,7 +229,7 @@ namespace FlightProject.DAOs
 
         public void Update(Customer t)
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;

@@ -11,10 +11,9 @@ namespace FlightProject.DAOs
 {
     internal class GeneralDAO : IGeneralDAO
     {
-        const string CONNECTIONSTRING = ConnectionStrings.MSSQLConnectionString;
         public void CleanFlightList()
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -29,7 +28,7 @@ namespace FlightProject.DAOs
 
         public void DBTestPrep()
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -44,7 +43,7 @@ namespace FlightProject.DAOs
 
         public void DBClear()
         {
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -60,7 +59,7 @@ namespace FlightProject.DAOs
         public int DoesUsernameExist(string userName)
         {
             int result = 0;
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;
@@ -92,7 +91,7 @@ namespace FlightProject.DAOs
         public int TryLogin(string username)
         {
             int result = 0;
-            using (SqlConnection connection = new SqlConnection(CONNECTIONSTRING))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["GCloudConnectionString"].ConnectionString))
             {
                 SqlCommand sqlCommand = new SqlCommand();
                 sqlCommand.Connection = connection;

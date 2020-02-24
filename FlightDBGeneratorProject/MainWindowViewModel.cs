@@ -537,9 +537,7 @@ namespace FlightProjectDBGenerator
         private int UserLogin(string username, string password)
         {
             UserLoginEvent.WaitOne();
-            flyingCenterSystem.Username = username;
-            flyingCenterSystem.Password = password;
-            int index = flyingCenterSystem.UserLogin();
+            int index = flyingCenterSystem.UserLogin(username,password);
             UserLoginEvent.Set();
             return index;
         }

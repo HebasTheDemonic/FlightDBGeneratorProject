@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="FlightProjectDBGenerator.DataSetUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightProjectDBGenerator"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="140">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="b2v"/>
+        <ControlTemplate x:Key="ErrorTemplate">
+            <DockPanel LastChildFill="True">
+                <Border BorderBrush="Red" BorderThickness="1">
+                    <AdornedElementPlaceholder />
+                </Border>
+            </DockPanel>
+        </ControlTemplate>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Height="20"
+                 Grid.Row="0"
+                 Text="{Binding NonRandomValue}"
+                 TextAlignment="Center"
+                 Visibility="{Binding IsRandomDisabled, Converter={StaticResource b2v}}"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="0"
+                    Visibility="{Binding IsRandomEnabled, Converter={StaticResource b2v}}">
+            <TextBox Height="20"
+                     Width="20"
+                     Text="{Binding MinRandomValue}"
+                     TextAlignment="Center"
+                     Margin="15,0,5,0"/>
+            <Label Content="-"
+                   Height="20"/>
+            <TextBox Height="20"
+                     Width="20"
+                     Text="{Binding MaxRandomValue}"
+                     TextAlignment="Center"
+                     Margin="5,0,15,0"/>
+        </StackPanel>
+        <CheckBox Grid.Column="2"
+                  VerticalAlignment="Center"
+                  IsChecked="{Binding IsRandomEnabled}"/>
+    </Grid>
+</UserControl>
