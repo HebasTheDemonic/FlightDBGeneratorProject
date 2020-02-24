@@ -16,15 +16,16 @@ using System.Windows.Shapes;
 namespace FlightProjectDBGenerator
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DataSetUserControl.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DataSetUserControl : UserControl
     {
-        MainWindowViewModel ViewModel = new MainWindowViewModel();
-        public MainWindow()
+        DataSetUserControlViewModel viewModel = new DataSetUserControlViewModel();
+
+        public DataSetUserControl()
         {
             InitializeComponent();
-            this.DataContext = ViewModel;
+            this.DataContext = viewModel;
         }
     }
 }

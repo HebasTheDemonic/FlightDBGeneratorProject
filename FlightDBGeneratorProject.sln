@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightDBGeneratorProject", "FlightDBGeneratorProject\FlightDBGeneratorProject.csproj", "{23624405-EEC5-4590-BD41-E0133431D4A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlightProjectDLL", "FlightProjectDLL\FlightProjectDLL.csproj", "{AC9F46DF-7FF7-4714-99C0-A9D3096FED3A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{23624405-EEC5-4590-BD41-E0133431D4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23624405-EEC5-4590-BD41-E0133431D4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23624405-EEC5-4590-BD41-E0133431D4A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC9F46DF-7FF7-4714-99C0-A9D3096FED3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC9F46DF-7FF7-4714-99C0-A9D3096FED3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC9F46DF-7FF7-4714-99C0-A9D3096FED3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC9F46DF-7FF7-4714-99C0-A9D3096FED3A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
