@@ -164,13 +164,16 @@ namespace FlightProjectDBGenerator
             }
 
             AdministratorDataSet.runThread = true;
-            CountriesDataSet.runThread = true;
-            AirlineDataSet.runThread = true;
-            CustomerDataSet.runThread = true;
-            FlightsPerCompanyDataSet.runThread = true;
-            TicketsPerCustomerDataSet.runThread = true;
+            //CountriesDataSet.runThread = true;
+            //AirlineDataSet.runThread = true;
+            //CustomerDataSet.runThread = true;
+            //FlightsPerCompanyDataSet.runThread = true;
+            //TicketsPerCustomerDataSet.runThread = true;
 
-            await Task.Run(() => {
+            AdministratorDBCreator();
+
+            await Task.Run(() =>
+            {
                 AdministratorDataSet.DBCreated.WaitOne();
                 CountriesDataSet.DBCreated.WaitOne();
                 AirlineDataSet.DBCreated.WaitOne();
@@ -189,8 +192,8 @@ namespace FlightProjectDBGenerator
 
         private void AdministratorDBCreator()
         {
-            while (true)
-            {
+            //while (true)
+            //{
                 if (AdministratorDataSet.runThread)
                 {
                     List<Administrator> administrators = new List<Administrator>();
@@ -225,9 +228,9 @@ namespace FlightProjectDBGenerator
                 }
                 else
                 {
-                    Thread.Sleep(500);
+                    Thread.Sleep(50);
                 }
-            }
+            //}
         }
 
         private void CountryDBCreator()
@@ -253,12 +256,12 @@ namespace FlightProjectDBGenerator
                         UpdateProgress();
                     }
 
-                    //int facadeIndex = UserLogin("Admin", "9999");
-                    //LoggedInAdministratorFacade AdminFacade = (LoggedInAdministratorFacade)FlyingCenterSystem.FacadeList[facadeIndex];
-                    //foreach (Country country in countries)
-                    //{
-                    //    AdminFacade.CreateCountry(AdminFacade.LoginToken, country);
-                    //}
+                    int facadeIndex = UserLogin("Admin", "9999");
+                    LoggedInAdministratorFacade AdminFacade = (LoggedInAdministratorFacade)FlyingCenterSystem.FacadeList[facadeIndex];
+                    foreach (Country country in countries)
+                    {
+                        AdminFacade.CreateCountry(AdminFacade.LoginToken, country);
+                    }
 
                     CountriesDataSet.DBCreated.Set();
                     CountriesDataSet.runThread = false;
@@ -295,12 +298,12 @@ namespace FlightProjectDBGenerator
                     }
                     CountriesDataSet.DBCreated.WaitOne();
 
-                    //int facadeIndex = UserLogin("Admin", "9999");
-                    //LoggedInAdministratorFacade AdminFacade = (LoggedInAdministratorFacade)FlyingCenterSystem.FacadeList[facadeIndex];
-                    //foreach (AirlineCompany airline in airlineCompanies)
-                    //{
-                    //    AdminFacade.CreateNewAirline(AdminFacade.LoginToken, airline);
-                    //}
+                    int facadeIndex = UserLogin("Admin", "9999");
+                    LoggedInAdministratorFacade AdminFacade = (LoggedInAdministratorFacade)FlyingCenterSystem.FacadeList[facadeIndex];
+                    foreach (AirlineCompany airline in airlineCompanies)
+                    {
+                        AdminFacade.CreateNewAirline(AdminFacade.LoginToken, airline);
+                    }
                     
                     AirlineDataSet.DBCreated.Set();
                     AirlineDataSet.runThread = false;
@@ -335,12 +338,12 @@ namespace FlightProjectDBGenerator
                         UpdateProgress();
                     }
 
-                    //int facadeIndex = UserLogin("Admin", "9999");
-                    //LoggedInAdministratorFacade AdminFacade = (LoggedInAdministratorFacade)FlyingCenterSystem.FacadeList[facadeIndex];
-                    //foreach (Customer customer in customers)
-                    //{
-                    //    AdminFacade.CreateNewCustomer(AdminFacade.LoginToken, customer);
-                    //}
+                    int facadeIndex = UserLogin("Admin", "9999");
+                    LoggedInAdministratorFacade AdminFacade = (LoggedInAdministratorFacade)FlyingCenterSystem.FacadeList[facadeIndex];
+                    foreach (Customer customer in customers)
+                    {
+                        AdminFacade.CreateNewCustomer(AdminFacade.LoginToken, customer);
+                    }
 
                     CustomerDataSet.DBCreated.Set();
                     CustomerDataSet.runThread = false;
@@ -379,18 +382,18 @@ namespace FlightProjectDBGenerator
                     }
                     AirlineDataSet.DBCreated.WaitOne();
 
-                    //int totalIndex = 0;
-                    //for (int keyIndex = 0; keyIndex < AirlineDataSet.listSize; keyIndex++)
-                    //{
-                    //    int facadeIndex = UserLogin(airlineCompanies[keyIndex].UserName, airlineCompanies[keyIndex].Password);
-                    //    LoggedInAirlineFacade airlineFacade = (LoggedInAirlineFacade)FlyingCenterSystem.FacadeList[facadeIndex];
-                    //    DictionaryOfFlightListSizeByAirline.TryGetValue(keyIndex, out int CurrentFlightListSize);
+                    int totalIndex = 0;
+                    for (int keyIndex = 0; keyIndex < AirlineDataSet.listSize; keyIndex++)
+                    {
+                        int facadeIndex = UserLogin(airlineCompanies[keyIndex].UserName, airlineCompanies[keyIndex].Password);
+                        LoggedInAirlineFacade airlineFacade = (LoggedInAirlineFacade)FlyingCenterSystem.FacadeList[facadeIndex];
+                        DictionaryOfFlightListSizeByAirline.TryGetValue(keyIndex, out int CurrentFlightListSize);
 
-                    //    for (int flightListIndex = 1; flightListIndex <= CurrentFlightListSize; totalIndex++, flightListIndex++)
-                    //    {
-                    //        airlineFacade.CreateFlight(airlineFacade.LoginToken, flights[totalIndex]);   
-                    //    }
-                    //}
+                        for (int flightListIndex = 1; flightListIndex <= CurrentFlightListSize; totalIndex++, flightListIndex++)
+                        {
+                            airlineFacade.CreateFlight(airlineFacade.LoginToken, flights[totalIndex]);   
+                        }
+                    }
 
                     FlightsPerCompanyDataSet.DBCreated.Set();
                     FlightsPerCompanyDataSet.runThread = false;
@@ -438,17 +441,17 @@ namespace FlightProjectDBGenerator
                     FlightsPerCompanyDataSet.DBCreated.WaitOne();
                     CustomerDataSet.DBCreated.WaitOne();
 
-                    //int totalIndex = 0;
-                    //for (int keyIndex = 0; keyIndex < CustomerDataSet.listSize; keyIndex++)
-                    //{
-                    //    int facadeIndex = UserLogin(customers[keyIndex].UserName, customers[keyIndex].Password);
-                    //    LoggedInCustomerFacade customerFacade = (LoggedInCustomerFacade)FlyingCenterSystem.FacadeList[facadeIndex];
-                    //    DictionaryOfTicketListSizeByCustomer.TryGetValue(keyIndex, out int currentListSize); 
-                    //    for (int index = 0; index < currentListSize; index++, totalIndex++)
-                    //    {
-                    //        customerFacade.PurchaseTicket(customerFacade.LoginToken, tickets[totalIndex].FlightId);
-                    //    }
-                    //}
+                    int totalIndex = 0;
+                    for (int keyIndex = 0; keyIndex < CustomerDataSet.listSize; keyIndex++)
+                    {
+                        int facadeIndex = UserLogin(customers[keyIndex].UserName, customers[keyIndex].Password);
+                        LoggedInCustomerFacade customerFacade = (LoggedInCustomerFacade)FlyingCenterSystem.FacadeList[facadeIndex];
+                        DictionaryOfTicketListSizeByCustomer.TryGetValue(keyIndex, out int currentListSize); 
+                        for (int index = 0; index < currentListSize; index++, totalIndex++)
+                        {
+                            customerFacade.PurchaseTicket(customerFacade.LoginToken, tickets[totalIndex].FlightId);
+                        }
+                    }
 
                     TicketsPerCustomerDataSet.DBCreated.Set();
                     TicketsPerCustomerDataSet.runThread = false;

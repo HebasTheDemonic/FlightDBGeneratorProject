@@ -20,12 +20,10 @@ namespace FlightProjectDBGenerator
     /// </summary>
     public partial class DataSetUserControl : UserControl
     {
-        DataSetUserControlViewModel viewModel = new DataSetUserControlViewModel();
 
         public DataSetUserControl()
         {
             InitializeComponent();
-            this.DataContext = viewModel;
         }
     }
 }
