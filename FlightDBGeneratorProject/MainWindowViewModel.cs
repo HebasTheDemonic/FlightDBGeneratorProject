@@ -164,11 +164,11 @@ namespace FlightProjectDBGenerator
             }
 
             AdministratorDataSet.runThread = true;
-            //CountriesDataSet.runThread = true;
-            //AirlineDataSet.runThread = true;
-            //CustomerDataSet.runThread = true;
-            //FlightsPerCompanyDataSet.runThread = true;
-            //TicketsPerCustomerDataSet.runThread = true;
+            CountriesDataSet.runThread = true;
+            AirlineDataSet.runThread = true;
+            CustomerDataSet.runThread = true;
+            FlightsPerCompanyDataSet.runThread = true;
+            TicketsPerCustomerDataSet.runThread = true;
 
             AdministratorDBCreator();
 
@@ -192,8 +192,8 @@ namespace FlightProjectDBGenerator
 
         private void AdministratorDBCreator()
         {
-            //while (true)
-            //{
+            while (true)
+            {
                 if (AdministratorDataSet.runThread)
                 {
                     List<Administrator> administrators = new List<Administrator>();
@@ -230,7 +230,7 @@ namespace FlightProjectDBGenerator
                 {
                     Thread.Sleep(50);
                 }
-            //}
+            }
         }
 
         private void CountryDBCreator()
