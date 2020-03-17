@@ -21,7 +21,7 @@ namespace FlightProjectDBGenerator
             client.BaseAddress = new Uri(ConfigurationManager.AppSettings["RANDOM_USER_URL"]);
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             Administrator administrator = new Administrator();
-
+              
             HttpResponseMessage response = client.GetAsync("").Result;
             if (response.IsSuccessStatusCode)
             {
